@@ -1,7 +1,7 @@
 const UserRole = {
     COMPANY: 'COMPANY',
     COLLECTOR: 'COLLECTOR',
-    USER: 'CITIZEN'
+    EMPLOYEE: 'EMPLOYEE'
 };
 
 const AccountType = {

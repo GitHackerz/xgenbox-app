@@ -15,19 +15,31 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: String,
+        required: true
+    },
+    role: {
+        type: String,
+        default: UserRole.EMPLOYEE,
+        enum: Object.values(UserRole)
+    },
     // Only For Collectors & Companies
     accountType: {
         type: String,
         enum: Object.values(AccountType)
     },
-    // Only For Companies
-    phone: {
+    // Only for Collectors if accountType is Company
+    companyName: {
+        type: Schema.Types.ObjectId,
+        ref: 'Company'
+    },
+    // Only for Company
+    address: {
         type: String
     },
-    role: {
-        type: String,
-        default: UserRole.USER,
-        enum: Object.values(UserRole)
+    city: {
+        type: String
     }
 });
 
