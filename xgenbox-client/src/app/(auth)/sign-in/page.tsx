@@ -42,7 +42,7 @@ export default function SigninPage() {
           <div className="h-full flex  w-full flex-col gap-14 items-center justify-center ">
             <div className="flex flex-col items-center">
               <h1 className="text-3xl font-bold text-white">
-                Welcome to XGenBox
+                Welcome to XGENBOX
               </h1>
               <p className={"text-sm text-zinc-300 text-center"}>
                 Register now to access exclusive features and personalized
@@ -77,7 +77,7 @@ export default function SigninPage() {
                 <span className="font-bold ">citizen account</span>
               </h1>
               <p className="text-sm text-muted-foreground">
-                {"Don't have an account?"}
+                {"Don't have an account? "}
                 <Link
                   href={"/sign-up/citizen"}
                   className="text-primary font-semibold"
@@ -86,7 +86,6 @@ export default function SigninPage() {
                 </Link>
               </p>
             </div>
-            {/*<UserAuthForm />*/}
             <SigninForm />
           </div>
         </div>

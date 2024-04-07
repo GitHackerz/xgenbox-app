@@ -69,7 +69,7 @@ export default function SignUpPage({ params }: { params: { type: UserType } }) {
           <div className="h-full flex  w-full flex-col gap-14 items-center justify-center ">
             <div className="flex flex-col items-center">
               <h1 className="text-3xl font-bold text-white">
-                Welcome to XGenBox
+                Welcome to XGENBOX
               </h1>
               <p className={"text-sm text-zinc-300 text-center"}>
                 Register now to access exclusive features and personalized
