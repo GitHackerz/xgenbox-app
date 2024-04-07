@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { UserRole } = require('../enums/EUser');
+const { UserRole, AccountType } = require('../enums/EUser');
 
 const userSchema = new Schema({
     name: {
@@ -14,6 +14,15 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    // Only For Collectors & Companies
+    accountType: {
+        type: String,
+        enum: Object.values(AccountType)
+    },
+    // Only For Companies
+    phone: {
+        type: String
     },
     role: {
         type: String,
