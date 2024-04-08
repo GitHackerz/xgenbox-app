@@ -5,6 +5,7 @@ import { FaTrashRestore, FaUser, FaWarehouse } from "react-icons/fa";
 import SignUpForm from "@/components/auth/signup-form";
 import { UserType } from "@/enums";
 import { redirect } from "next/navigation";
+import { getCompanies } from "@/actions/company";
 
 const Card = ({
   icon: Icon,
@@ -34,17 +35,23 @@ const Card = ({
   </Link>
 );
 
-export default function SignUpPage({ params }: { params: { type: UserType } }) {
+export default async function SignUpPage({
+  params,
+}: {
+  params: { type: UserType };
+}) {
+  const companies = await getCompanies();
+
   const { type } = params;
-  if (!UserType[type.toUpperCase() as UserType]) redirect("/sign-up/citizen");
+  if (!UserType[type.toUpperCase() as UserType]) redirect("/sign-up/employee");
   return (
     <main>
       <div className=" h-screen container relative flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0 duration-300">
         <div className="lg:p-8 h-full">
-          <div className="h-full  mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+          <div className="h-full  mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[450px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl tracking-tight capitalize font-medium">
-                Create your <span className="font-bold ">{type} account</span>
+                Create your <span className="font-bold ">{type}</span> account
               </h1>
               <p className="text-sm text-muted-foreground">
                 Already have an account?{" "}
@@ -53,7 +60,10 @@ export default function SignUpPage({ params }: { params: { type: UserType } }) {
                 </Link>
               </p>
             </div>
-            <SignUpForm type={type.toUpperCase() as UserType} />
+            <SignUpForm
+              type={type.toUpperCase() as UserType}
+              companies={companies}
+            />
           </div>
         </div>
         <div className="bg-zinc-900 hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
@@ -78,11 +88,11 @@ export default function SignUpPage({ params }: { params: { type: UserType } }) {
             </div>
             <div className="flex flex-col items-end gap-4 w-full px-4">
               <Card
-                title="Citizen"
+                title="Employee"
                 description="Register now to access exclusive features and personalized content."
                 icon={FaUser}
-                active={type.toUpperCase() === UserType.CITIZEN}
-                order={type.toUpperCase() === UserType.CITIZEN ? 2 : 1}
+                active={type.toUpperCase() === UserType.EMPLOYEE}
+                order={type.toUpperCase() === UserType.EMPLOYEE ? 2 : 1}
               />
               <Card
                 title="Collector"
@@ -92,7 +102,7 @@ export default function SignUpPage({ params }: { params: { type: UserType } }) {
                 order={
                   type.toUpperCase() === UserType.COLLECTOR
                     ? 2
-                    : type.toUpperCase() === UserType.CITIZEN
+                    : type.toUpperCase() === UserType.EMPLOYEE
                       ? 1
                       : 3
                 }

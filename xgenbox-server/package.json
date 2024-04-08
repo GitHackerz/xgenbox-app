@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "main": "server.js",
   "scripts": {
     "start": "node ",
-    "dev": "nodemon ",
+    "dev": "nodemon .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -19,6 +19,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jose": "^5.2.4",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.0"
   },

@@ -4,8 +4,22 @@
     "plugin:prettier/recommended",
     "next/core-web-vitals"
   ],
-  "plugins": ["prettier"], // Add this line if not already present
+  "plugins": ["prettier"],
+  // Add this line if not already present
   "rules": {
-    "prettier/prettier": ["error", { "endOfLine": "auto" }] // Adjust Prettier rules if needed
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^[A-Z_]+$",
+        "args": "after-used",
+        "ignoreRestSiblings": false
+      }
+    ]
   }
 }

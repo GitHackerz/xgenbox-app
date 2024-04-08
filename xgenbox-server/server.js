@@ -10,7 +10,7 @@ const { connectToDB } = require('./src/utils/db');
 //import routes
 const userRoute = require('./src/routes/UserRoute');
 
-const { PORT } = process.env;
+const { PORT } = process.env || 7080;
 const app = express();
 
 //middlewares

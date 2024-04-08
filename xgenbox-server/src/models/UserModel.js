@@ -30,11 +30,14 @@ const userSchema = new Schema({
         enum: Object.values(AccountType)
     },
     // Only for Collectors if accountType is Company
-    companyName: {
+    company: {
         type: Schema.Types.ObjectId,
         ref: 'Company'
     },
     // Only for Company
+    companyName: {
+        type: String
+    },
     address: {
         type: String
     },

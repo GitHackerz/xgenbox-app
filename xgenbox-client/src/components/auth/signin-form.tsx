@@ -9,7 +9,6 @@ import {
   FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -17,6 +16,9 @@ import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/icons";
 import * as React from "react";
 import Link from "next/link";
+import { loginAccount } from "@/actions/auth";
+import { toast } from "@/components/ui/use-toast";
+import { redirect, useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -25,6 +27,7 @@ const formSchema = z.object({
 
 export default function SigninForm() {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -35,8 +38,24 @@ export default function SigninForm() {
   });
 
   const handleSubmit = form.handleSubmit(
-    (values: z.infer<typeof formSchema>) => {
-      console.log(values);
+    async (values: z.infer<typeof formSchema>) => {
+      setIsLoading(true);
+      const { token, error } = await loginAccount(values);
+      if (!token) {
+        toast({
+          title: "Error",
+          description: error,
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      toast({
+        title: "Success",
+        description: "Logged in successfully",
+      });
+      setIsLoading(false);
+      router.push("/");
     },
   );
 

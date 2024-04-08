@@ -9,6 +9,15 @@ const GetUsers = async(req, res) => {
     }
 };
 
+const GetUsersByType = async(req, res) => {
+    try {
+        const users = await UserService.getByType(req.params.type);
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const GetUser = async(req, res) => {
     try {
         const user = await UserService.getById(req.params.id);
@@ -63,6 +72,7 @@ const SignIn = async(req, res) => {
         const { token, user } = await UserService.signin(email, password);
         return res.status(200).json({ token, user });
     } catch (error) {
+        console.log(error.message);
         if (error.message === 'User not found')
             return res.status(404).json({ error: error.message });
 
@@ -73,4 +83,4 @@ const SignIn = async(req, res) => {
     }
 };
 
-module.exports = { GetUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn };
+module.exports = { GetUsers, GetUsersByType, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn };

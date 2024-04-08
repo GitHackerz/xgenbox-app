@@ -51,7 +51,7 @@ export default function SigninPage() {
             </div>
             <div className="flex flex-col items-start gap-4 w-full px-4">
               <Card
-                title="Citizen"
+                title="Employee"
                 description="Register now to access exclusive features and personalized content."
                 icon={FaUser}
               />
@@ -73,13 +73,12 @@ export default function SigninPage() {
           <div className="h-full  mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl tracking-tight capitalize font-medium">
-                Sign in to your{" "}
-                <span className="font-bold ">citizen account</span>
+                Sign in to your account
               </h1>
               <p className="text-sm text-muted-foreground">
                 {"Don't have an account? "}
                 <Link
-                  href={"/sign-up/citizen"}
+                  href={"/sign-up/employee"}
                   className="text-primary font-semibold"
                 >
                   Sign up

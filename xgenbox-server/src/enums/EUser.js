@@ -5,12 +5,9 @@ const UserRole = {
 };
 
 const AccountType = {
-    INDIVIDUAL: 'Individual',
-    COMPANY: 'Company',
-    ORGANISATION_ASSOCIATION: 'Organisation/Association',
-    MUNICIPALITY: 'Municipality',
-    EVENT_ORGANISER: 'Event Organiser',
-    ADVERTISING_AGENCY: 'Advertising Agency',
-    OTHER: 'Other'
+    HOSPITAL : 'Hospital',
+    CLINIC : 'Clinic',
+    LABORATORY : 'Laboratory',
+    RESEARCH_CENTER : 'Research center'
 };
 module.exports = { UserRole, AccountType };

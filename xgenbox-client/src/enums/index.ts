@@ -1,10 +1,8 @@
 export enum CompanyAccountType {
-  COMPANY = "Company",
-  ORGANISATION_ASSOCIATION = "Organisation/Association",
-  MUNICIPALITY = "Municipality",
-  EVENT_ORGANISER = "Event Organiser",
-  ADVERTISING_AGENCY = "Advertising Agency",
-  OTHER = "Other",
+  HOSPITAL = "Hospital",
+  CLINIC = "Clinic",
+  LABORATORY = "Laboratory",
+  RESEARCH_CENTER = "Research center",
 }
 
 export enum CollectorAccountType {
@@ -13,7 +11,7 @@ export enum CollectorAccountType {
 }
 
 export enum UserType {
-  CITIZEN = "CITIZEN",
+  EMPLOYEE = "EMPLOYEE",
   COLLECTOR = "COLLECTOR",
   COMPANY = "COMPANY",
 }
