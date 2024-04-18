@@ -18,7 +18,7 @@ import * as React from "react";
 import Link from "next/link";
 import { loginAccount } from "@/actions/auth";
 import { toast } from "@/components/ui/use-toast";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email(),
