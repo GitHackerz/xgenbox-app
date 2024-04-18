@@ -1,5 +1,5 @@
 const UserModel = require('../models/UserModel');
-const { sign } = require('jsonwebtoken');
+// const { sign } = require('jsonwebtoken');
 const { SignJWT } = require('jose');
 
 const UserService = {
