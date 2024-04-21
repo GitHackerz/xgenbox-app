@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/client/icons";
 import * as React from "react";
 import { CollectorAccountType, CompanyAccountType, UserType } from "@/enums";
 import {
@@ -24,9 +24,8 @@ import {
 } from "@/components/ui/select";
 import { createAccount } from "@/actions/auth";
 import { Company } from "@/types/User";
-import { Toast, ToastAction } from "@/components/ui/toast";
 import { toast } from "@/components/ui/use-toast";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const formEmployeeSchema = z.object({
   name: z.string().min(3),

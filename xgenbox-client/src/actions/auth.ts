@@ -1,7 +1,8 @@
 "use server";
 
 import axios from "axios";
-import { setSession } from "@/lib/auth";
+import { clearSession, setSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export const createAccount = async (data: any) => {
   try {
@@ -34,4 +35,9 @@ export const loginAccount = async (data: any) => {
       error: error?.response?.data?.error || error.message,
     };
   }
+};
+
+export const logoutAccount = async () => {
+  await clearSession();
+  redirect("/sign-in");
 };

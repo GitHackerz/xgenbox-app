@@ -1,10 +1,10 @@
-import HeroSection from "@/components/hero-section";
-import Problems from "@/components/problems";
-import Stats from "@/components/stats";
-import Testimonials from "@/components/testimonials";
-import CallToAction from "@/components/call-to-action";
-import Blog from "@/components/blog";
-import Features from "@/components/features";
+import HeroSection from "@/components/client/hero-section";
+import Problems from "@/components/client/problems";
+import Stats from "@/components/client/stats";
+import Testimonials from "@/components/client/testimonials";
+import CallToAction from "@/components/client/call-to-action";
+import Blog from "@/components/client/blog";
+import Features from "@/components/client/features";
 
 export default function Home() {
   return (

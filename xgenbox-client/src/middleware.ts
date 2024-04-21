@@ -7,14 +7,14 @@ export default async function middleware(request: NextRequest) {
   const session = await getSession();
 
   if (!session) {
-    if (pathname !== "/sign-in" && pathname !== "/sign-up") {
+    if (pathname.includes("dashboard")) {
       return NextResponse.redirect(new URL("/sign-in", request.nextUrl).href);
     } else {
       return NextResponse.next();
     }
   } else {
-    if (pathname === "/sign-in" || pathname === "/sign-up") {
-      return NextResponse.redirect(new URL("/", request.nextUrl).href);
+    if (pathname === "/sign-in" || pathname.includes("sign-up")) {
+      return NextResponse.redirect(new URL("/dashboard", request.nextUrl).href);
     }
   }
   return NextResponse.next();

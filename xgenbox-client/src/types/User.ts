@@ -6,6 +6,8 @@ export interface User {
   email: string;
   password: string;
   phone: string;
+  role: UserType;
+  status: string;
 }
 
 export interface Employee extends User {

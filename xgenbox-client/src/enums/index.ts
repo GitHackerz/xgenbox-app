@@ -14,4 +14,11 @@ export enum UserType {
   EMPLOYEE = "EMPLOYEE",
   COLLECTOR = "COLLECTOR",
   COMPANY = "COMPANY",
+  ADMIN = "ADMIN",
+}
+
+export enum UserStatus {
+  PENDING = "Pending",
+  APPROVED = "Approved",
+  REJECTED = "Rejected",
 }
