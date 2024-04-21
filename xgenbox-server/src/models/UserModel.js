@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { UserRole, AccountType } = require('../enums/EUser');
+const { UserRole, AccountType, UserStatus } = require('../enums/EUser');
 
 const userSchema = new Schema({
     name: {
@@ -24,10 +24,10 @@ const userSchema = new Schema({
         default: UserRole.EMPLOYEE,
         enum: Object.values(UserRole)
     },
-    // Only For Collectors & Companies
-    accountType: {
+    status: {
         type: String,
-        enum: Object.values(AccountType)
+        default: UserStatus.PENDING,
+        enum: Object.values(UserStatus)
     },
     // Only for Collectors if accountType is Company
     company: {
@@ -43,6 +43,10 @@ const userSchema = new Schema({
     },
     city: {
         type: String
+    },
+    accountType: {
+        type: String,
+        enum: Object.values(AccountType)
     }
 });
 

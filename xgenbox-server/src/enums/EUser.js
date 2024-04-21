@@ -1,13 +1,23 @@
 const UserRole = {
     COMPANY: 'COMPANY',
     COLLECTOR: 'COLLECTOR',
-    EMPLOYEE: 'EMPLOYEE'
+    EMPLOYEE: 'EMPLOYEE',
+    ADMIN: 'ADMIN'
 };
 
 const AccountType = {
-    HOSPITAL : 'Hospital',
-    CLINIC : 'Clinic',
-    LABORATORY : 'Laboratory',
-    RESEARCH_CENTER : 'Research center'
+    HOSPITAL : 'Hospital', // For Company
+    CLINIC : 'Clinic', // For Company
+    LABORATORY : 'Laboratory', // For Company
+    RESEARCH_CENTER : 'Research center', // For Company
+    INDIVIDUAL : 'Individual', // For Collector
+    COMPANY: 'Company' // For Collector
 };
-module.exports = { UserRole, AccountType };
+
+const UserStatus = {
+    PENDING: 'Pending',
+    APPROVED: 'Approved',
+    REJECTED: 'Rejected'
+};
+
+module.exports = { UserRole, AccountType, UserStatus };

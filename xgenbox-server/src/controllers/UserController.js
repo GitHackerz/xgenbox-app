@@ -18,6 +18,15 @@ const GetUsersByType = async(req, res) => {
     }
 };
 
+const GetPendingUsers = async(req, res) => {
+    try {
+        const users = await UserService.getPending();
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const GetUser = async(req, res) => {
     try {
         const user = await UserService.getById(req.params.id);
@@ -69,10 +78,9 @@ const DeleteUser = async(req, res) => {
 const SignIn = async(req, res) => {
     try {
         const { email, password } = req.body;
-        const { token, user } = await UserService.signin(email, password);
-        return res.status(200).json({ token, user });
+        const { token } = await UserService.signin(email, password);
+        return res.status(200).json({ token });
     } catch (error) {
-        console.log(error.message);
         if (error.message === 'User not found')
             return res.status(404).json({ error: error.message });
 
@@ -83,4 +91,28 @@ const SignIn = async(req, res) => {
     }
 };
 
-module.exports = { GetUsers, GetUsersByType, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn };
+const approveUser = async(req, res) => {
+    try {
+        const user = await UserService.approve(req.params.id);
+        return res.status(200).json(user);
+    } catch (error) {
+        if (error.message === 'User not found')
+            return res.status(404).json({ error: error.message });
+
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+const rejectUser = async(req, res) => {
+    try {
+        const user = await UserService.reject(req.params.id);
+        return res.status(200).json(user);
+    } catch (error) {
+        if (error.message === 'User not found')
+            return res.status(404).json({ error: error.message });
+
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports = { GetUsers, GetUsersByType, GetPendingUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, approveUser, rejectUser };

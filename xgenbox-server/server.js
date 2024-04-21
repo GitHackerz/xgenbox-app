@@ -9,6 +9,7 @@ const { connectToDB } = require('./src/utils/db');
 
 //import routes
 const userRoute = require('./src/routes/UserRoute');
+const binRoute = require('./src/routes/BinRoute');
 
 const { PORT } = process.env || 7080;
 const app = express();
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 
 //use routes
 app.use('/api/user', userRoute);
+app.use('/api/bin', binRoute);
 
 app.listen(PORT, async() => {
     await connectToDB();

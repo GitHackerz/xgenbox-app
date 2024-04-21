@@ -1,9 +1,11 @@
 const UserModel = require('../models/UserModel');
 // const { sign } = require('jsonwebtoken');
 const { SignJWT } = require('jose');
+const { UserStatus } = require('../enums/EUser');
 
 const UserService = {
     getAll: () => UserModel.find(),
+    getPending: () => UserModel.find({ status: UserStatus.PENDING }),
     create: async(data) => {
         const existingUser = await UserService.getByEmail(data.email);
         if (existingUser)
@@ -36,9 +38,26 @@ const UserService = {
             throw new Error('Error signing token');
 
         return {
-            user,
             token
         };
+    },
+    approve: async(id) => {
+        const user = await UserService.getById(id);
+        if (!user)
+            throw new Error('User not found');
+        if (!user.status === UserStatus.PENDING)
+            throw new Error('User is not pending');
+        user.status = 'Approved';
+        return user.save();
+    },
+    reject: async(id) => {
+        const user = await UserService.getById(id);
+        if (!user)
+            throw new Error('User not found');
+        if (!user.status === UserStatus.PENDING)
+            throw new Error('User is not pending');
+        user.status = 'Rejected';
+        return user.save();
     }
 };
 
