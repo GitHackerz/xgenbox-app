@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node ",
+    "start": "node .",
     "dev": "nodemon .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
