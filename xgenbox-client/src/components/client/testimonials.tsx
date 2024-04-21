@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Testimonials() {
   return (
     <div className="text-gray-600 dark:text-gray-300" id="testimonials">
@@ -9,7 +11,7 @@ export default function Testimonials() {
       <div className="md:columns-2 lg:columns-3 gap-8 space-y-8">
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar.webp"
               alt="user avatar"
@@ -38,7 +40,7 @@ export default function Testimonials() {
         </div>
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar-1.webp"
               alt="user avatar"
@@ -64,7 +66,7 @@ export default function Testimonials() {
         </div>
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar-2.webp"
               alt="user avatar"
@@ -90,7 +92,7 @@ export default function Testimonials() {
         </div>
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar-3.webp"
               alt="user avatar"
@@ -116,7 +118,7 @@ export default function Testimonials() {
         </div>
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar-4.webp"
               alt="user avatar"
@@ -143,7 +145,7 @@ export default function Testimonials() {
         </div>
         <div className="aspect-auto p-8 border border-gray-100 rounded-3xl bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl shadow-gray-600/10 dark:shadow-none">
           <div className="flex gap-4">
-            <img
+            <Image
               className="w-12 h-12 rounded-full"
               src="/images/avatars/avatar-2.webp"
               alt="user avatar"
