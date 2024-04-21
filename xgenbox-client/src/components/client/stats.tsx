@@ -20,7 +20,7 @@ export default function Stats() {
         </div>
         <div className="md:7/12 lg:w-1/2">
           <h2 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-            Presentation of XGENBOX's Solution
+            Presentation of XGENBOX&apos;s Solution
           </h2>
           <p className="my-8 text-gray-600 dark:text-gray-300">
             XGENBOX offers a comprehensive and intelligent waste management

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function CallToAction() {
   return (
     <div className="relative py-16">
@@ -10,7 +12,7 @@ export default function CallToAction() {
       </div>
       <div className="relative">
         <div className="flex items-center justify-center -space-x-2">
-          <img
+          <Image
             loading="lazy"
             width="400"
             height="400"
@@ -18,7 +20,7 @@ export default function CallToAction() {
             alt="member photo"
             className="h-8 w-8 rounded-full object-cover"
           />
-          <img
+          <Image
             loading="lazy"
             width="200"
             height="200"
@@ -26,7 +28,7 @@ export default function CallToAction() {
             alt="member photo"
             className="h-12 w-12 rounded-full object-cover"
           />
-          <img
+          <Image
             loading="lazy"
             width="200"
             height="200"
@@ -34,7 +36,7 @@ export default function CallToAction() {
             alt="member photo"
             className="z-10 h-16 w-16 rounded-full object-cover"
           />
-          <img
+          <Image
             loading="lazy"
             width="200"
             height="200"
@@ -42,7 +44,7 @@ export default function CallToAction() {
             alt="member photo"
             className="relative h-12 w-12 rounded-full object-cover"
           />
-          <img
+          <Image
             loading="lazy"
             width="200"
             height="200"

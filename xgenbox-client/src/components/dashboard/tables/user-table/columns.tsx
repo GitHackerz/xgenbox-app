@@ -2,8 +2,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { User } from "@/types/User";
-import { Button } from "@/components/ui/button";
-import { approveUser, rejectUser } from "@/actions/user";
 import { UserStatus } from "@/enums";
 import ActionButton from "@/components/dashboard/tables/user-table/action-button";
 

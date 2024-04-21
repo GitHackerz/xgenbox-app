@@ -16,7 +16,6 @@ import { Separator } from "@/components/ui/separator";
 import { Heading } from "@/components/ui/heading";
 import { Input } from "@/components/ui/input";
 import { createBin, updateBin } from "@/actions/bin";
-import { router } from "next/client";
 import { useRouter } from "next/navigation";
 
 export const IMG_MAX_LIMIT = 3;

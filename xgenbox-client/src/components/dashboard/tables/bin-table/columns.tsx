@@ -2,8 +2,6 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Bin } from "@/types/Bin";
-import { Badge } from "@nextui-org/badge";
-import { UserStatus } from "@/enums";
 import { CellAction } from "@/components/dashboard/tables/bin-table/cell-action";
 
 export const columns: ColumnDef<Bin>[] = [

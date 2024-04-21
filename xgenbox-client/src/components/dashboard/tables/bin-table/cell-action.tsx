@@ -8,7 +8,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
-import { useState } from "react";
 import { Bin } from "@/types/Bin";
 import { deleteBin } from "@/actions/bin";
 import { useRouter } from "next/navigation";
@@ -18,15 +17,10 @@ interface CellActionProps {
 }
 
 export const CellAction: React.FC<CellActionProps> = ({ data }) => {
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
   const router = useRouter();
 
   const onDelete = async () => {
-    setLoading(true);
     await deleteBin(data._id);
-    setLoading(false);
-    setOpen(false);
   };
 
   return (
