@@ -20,4 +20,9 @@ const UserStatus = {
     REJECTED: 'Rejected'
 };
 
-module.exports = { UserRole, AccountType, UserStatus };
+const BinActionType = {
+    THROW: 'THROW',
+    COLLECT: 'COLLECT'
+};
+
+module.exports = { UserRole, AccountType, UserStatus, BinActionType };

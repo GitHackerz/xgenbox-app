@@ -58,6 +58,14 @@ const UserService = {
             throw new Error('User is not pending');
         user.status = 'Rejected';
         return user.save();
+    },
+    grant: async(id) => {
+        const user = await UserService.getById(id);
+        if (!user)
+            throw new Error('User not found');
+
+        user.role = 'ADMIN';
+        return user.save();
     }
 };
 

@@ -7,7 +7,8 @@ const BinService = {
     delete: (id) => BinModel.findByIdAndDelete(id),
     getById: (id) => BinModel.findById(id),
     getByType: (type) => BinModel.find({ type }),
-    getByLocation: (latitude, longitude) => BinModel.find({ latitude, longitude })
+    getByLocation: (latitude, longitude) => BinModel.find({ latitude, longitude }),
+    getByCompany: (company) => BinModel.find({ company })
 };
 
 module.exports = BinService;

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { MobileSidebar } from "./mobile-sidebar";
 import { UserNav } from "./user-nav";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -10,23 +11,25 @@ export default function Header() {
       <nav className="h-14 flex items-center justify-between px-4">
         <div className="hidden lg:block">
           <Link
-            href={"https://github.com/Kiranism/next-shadcn-dashboard-starter"}
-            target="_blank"
+            href={"/dashboard"}
             className="inline-flex items-center font-bold text-lg text-primary-500 dark:text-primary-400"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2 h-6 w-6"
-            >
-              <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-            </svg>
-            XGENBOX
+            <div className="dark:block hidden">
+              <Image
+                src={"/images/logoW.webp"}
+                width={120}
+                height={120}
+                alt="logo"
+              />
+            </div>
+            <div className="block dark:hidden">
+              <Image
+                src={"/images/logo.webp"}
+                width={120}
+                height={120}
+                alt="logo"
+              />
+            </div>
           </Link>
         </div>
         <div className={cn("block lg:!hidden")}>

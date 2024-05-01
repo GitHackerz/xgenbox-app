@@ -13,6 +13,16 @@ export const getUsers = async () => {
   }
 };
 
+export const getUser = async (id: string) => {
+  try {
+    const response = await axios.get(process.env.SERVER_URL + `/user/${id}`);
+    return response.data;
+  } catch (error: any) {
+    console.error(error?.response?.data?.error || error.message);
+    return null;
+  }
+};
+
 export const approveUser = async (id: string) => {
   try {
     console.log(process.env.SERVER_URL + `/user/${id}/approve`);
@@ -38,6 +48,18 @@ export const rejectUser = async (id: string) => {
   }
 };
 
+export const grantUser = async (id: string) => {
+  try {
+    const response = await axios.get(
+      process.env.SERVER_URL + `/user/${id}/grant`,
+    );
+    revalidatePath("/dashboard/user");
+    return response.data;
+  } catch (error: any) {
+    console.error(error?.response?.data?.error || error.message);
+  }
+};
+
 export const getPendingUsers = async () => {
   try {
     const response = await axios.get(process.env.SERVER_URL + "/user/pending");
@@ -46,5 +68,15 @@ export const getPendingUsers = async () => {
     console.log(error?.response?.data?.error || error.message);
     console.error(error?.response?.data?.error || error.message);
     return [];
+  }
+};
+
+export const deleteUser = async (id: string) => {
+  try {
+    const response = await axios.delete(process.env.SERVER_URL + `/user/${id}`);
+    revalidatePath("/dashboard/user");
+    return response.data;
+  } catch (error: any) {
+    console.error(error?.response?.data?.error || error.message);
   }
 };

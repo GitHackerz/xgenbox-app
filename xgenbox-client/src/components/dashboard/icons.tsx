@@ -25,11 +25,11 @@ import {
   Settings,
   SunMedium,
   Trash,
-  Twitter,
   User,
   User2Icon,
   UserX2Icon,
   X,
+  History,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -62,6 +62,7 @@ export const Icons = {
   moon: Moon,
   laptop: Laptop,
   qrCode: QrCode,
+  history: History,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
@@ -79,6 +80,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  twitter: Twitter,
   check: Check,
 };

@@ -29,10 +29,10 @@ export const collectorNavItems: NavItem[] = [
     label: "Dashboard",
   },
   {
-    title: "User",
-    href: "/dashboard/user",
-    icon: "user",
-    label: "user",
+    title: "History",
+    href: "/dashboard/collection/history",
+    icon: "history",
+    label: "history",
   },
   {
     title: "Bins",
@@ -56,10 +56,10 @@ export const companyNavItems: NavItem[] = [
     label: "user",
   },
   {
-    title: "Collections",
-    href: "/dashboard/bin",
+    title: "Collections History",
+    href: "/dashboard/collection",
     icon: "trash",
-    label: "bins",
+    label: "collection",
   },
   {
     title: "Bins",
@@ -81,5 +81,11 @@ export const employeeNavItems: NavItem[] = [
     href: "/dashboard/qr-code",
     icon: "qrCode",
     label: "QrCode",
+  },
+  {
+    title: "Scan History",
+    href: "/dashboard/scan/history",
+    icon: "history",
+    label: "history",
   },
 ];

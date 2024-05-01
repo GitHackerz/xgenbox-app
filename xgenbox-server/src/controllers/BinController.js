@@ -72,10 +72,20 @@ const DeleteBin = async(req, res) => {
     }
 };
 
+const GetBinByCompany = async(req, res) => {
+    try {
+        const bins = await BinService.getByCompany(req.params.company);
+        res.status(200).json(bins);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     GetBins,
     GetBinsByType,
     GetBinsByLocation,
+    GetBinByCompany,
     GetBin,
     CreateBin,
     UpdateBin,

@@ -29,6 +29,10 @@ const binSchema = new Schema({
     gaz: {
         type: Number,
         required: true
+    },
+    company: {
+        type: Schema.Types.ObjectId,
+        ref: 'Company'
     }
 });
 

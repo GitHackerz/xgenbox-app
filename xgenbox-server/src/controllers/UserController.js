@@ -115,4 +115,16 @@ const rejectUser = async(req, res) => {
     }
 };
 
-module.exports = { GetUsers, GetUsersByType, GetPendingUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, approveUser, rejectUser };
+const grantUser = async(req, res) => {
+    try {
+        const user = await UserService.grant(req.params.id);
+        return res.status(200).json(user);
+    } catch (error) {
+        if (error.message === 'User not found')
+            return res.status(404).json({ error: error.message });
+
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+module.exports = { GetUsers, GetUsersByType, GetPendingUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, approveUser, rejectUser, grantUser };

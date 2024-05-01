@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { GetUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, GetUsersByType, approveUser, rejectUser,
-    GetPendingUsers
+    GetPendingUsers, grantUser
 } = require('../controllers/UserController');
 // const { auth } = require('../config/AuthMiddlewares');
 
@@ -16,6 +16,7 @@ router.get('/pending', GetPendingUsers);
 
 router.get('/:id/approve', approveUser);
 router.get('/:id/reject', rejectUser);
+router.get('/:id/grant', grantUser);
 
 router.route('/:id')
     .get(GetUser)
