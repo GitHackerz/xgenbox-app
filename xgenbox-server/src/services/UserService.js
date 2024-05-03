@@ -4,8 +4,9 @@ const { SignJWT } = require('jose');
 const { UserStatus } = require('../enums/EUser');
 
 const UserService = {
-    getAll: () => UserModel.find(),
-    getPending: () => UserModel.find({ status: UserStatus.PENDING }),
+    getAll: () => UserModel.find().populate('company'),
+    getPending: () => UserModel.find({ status: UserStatus.PENDING }).populate('company'),
+    getByCompany: (company) => UserModel.find({ company }).populate('company'),
     create: async(data) => {
         const existingUser = await UserService.getByEmail(data.email);
         if (existingUser)
@@ -13,11 +14,11 @@ const UserService = {
 
         return UserModel.create(data);
     },
-    update: (id, data) => UserModel.findByIdAndUpdate(id, data, { new: true }),
-    delete: (id) => UserModel.findByIdAndDelete(id),
-    getById: (id) => UserModel.findById(id),
-    getByEmail: (email) => UserModel.findOne({ email }),
-    getByType: (type) => UserModel.find({ role: type.toUpperCase() }),
+    update: (id, data) => UserModel.findByIdAndUpdate(id, data, { new: true }).populate('company'),
+    delete: (id) => UserModel.findByIdAndDelete(id).populate('company'),
+    getById: (id) => UserModel.findById(id).populate('company'),
+    getByEmail: (email) => UserModel.findOne({ email }).populate('company'),
+    getByType: (type) => UserModel.find({ role: type.toUpperCase() }).populate('company'),
     signin: async(email, password) => {
         const user = await UserService.getByEmail(email);
         if (!user)

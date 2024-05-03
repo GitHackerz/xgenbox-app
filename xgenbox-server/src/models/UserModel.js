@@ -29,10 +29,10 @@ const userSchema = new Schema({
         default: UserStatus.PENDING,
         enum: Object.values(UserStatus)
     },
-    // Only for Collectors if accountType is Company
+    // Only for Employee and Collectors if accountType is Company
     company: {
         type: Schema.Types.ObjectId,
-        ref: 'Company'
+        ref: 'User'
     },
     // Only for Company
     companyName: {

@@ -1,6 +1,10 @@
 import ModeToggle from "@/components/client/mode-toggle";
+import { getSession } from "@/lib/auth";
+import Image from "next/image";
 
-export default function Header() {
+export default async function Header() {
+  const session = await getSession();
+
   return (
     <header>
       <nav className="z-10 w-full absolute">
@@ -14,20 +18,23 @@ export default function Header() {
               className="hidden peer"
             />
             <div className="relative z-20 w-full flex justify-between lg:w-max md:px-0">
-              <a
-                href="#home"
-                aria-label="logo"
-                className="flex space-x-2 items-center"
-              >
-                <div aria-hidden="true" className="flex space-x-1">
-                  <div className="h-4 w-4 rounded-full bg-gray-900 dark:bg-white"></div>
-                  <div className="h-6 w-2 bg-primary"></div>
-                </div>
-                <span className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Astrolus
-                </span>
-              </a>
-              <ModeToggle />
+              <div className="dark:block hidden">
+                <Image
+                  src={"/images/logoW.webp"}
+                  width={120}
+                  height={120}
+                  alt="logo"
+                />
+              </div>
+              <div className="block dark:hidden">
+                <Image
+                  src={"/images/logo.webp"}
+                  width={120}
+                  height={120}
+                  alt="logo"
+                />
+              </div>
+
               <div className="relative flex items-center lg:hidden max-h-10">
                 <label
                   role="button"
@@ -76,34 +83,28 @@ export default function Header() {
                       <span>Solution</span>
                     </a>
                   </li>
-                  <li>
-                    <a
-                      href="#testimonials"
-                      className="block md:px-4 transition hover:text-primary"
-                    >
-                      <span>Testimonials</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#blog"
-                      className="block md:px-4 transition hover:text-primary"
-                    >
-                      <span>Blog</span>
-                    </a>
-                  </li>
                 </ul>
               </div>
-
               <div className="mt-12 lg:mt-0">
-                <a
-                  href="#"
-                  className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
-                >
-                  <span className="relative text-sm font-semibold text-white">
-                    Get Started
-                  </span>
-                </a>
+                {session && session.user ? (
+                  <a
+                    href={`/dashboard`}
+                    className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  >
+                    <span className="relative text-sm font-semibold text-white">
+                      Dashboard
+                    </span>
+                  </a>
+                ) : (
+                  <a
+                    href={`/sign-in`}
+                    className="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                  >
+                    <span className="relative text-sm font-semibold text-white">
+                      Login
+                    </span>
+                  </a>
+                )}
               </div>
             </div>
           </div>

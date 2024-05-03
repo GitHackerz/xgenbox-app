@@ -1,8 +1,24 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['images.unsplash.com', 'c5.patreon.com'],
-  },
+    images: {
+        domains: [
+            'c5.patreon.com',
+            'images.unsplash.com',
+        ],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'c5.patreon.com',
+                port: "443",
+                pathname: '/upload',
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+                port: "443",
+                pathname: '/photo-',
+            },
+        ],
+    },
 
 };
 

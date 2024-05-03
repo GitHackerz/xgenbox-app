@@ -22,3 +22,9 @@ export enum UserStatus {
   APPROVED = "Approved",
   REJECTED = "Rejected",
 }
+
+export enum BinStatus {
+  PENDING = "Pending",
+  APPROVED = "Approved",
+  REJECTED = "Rejected",
+}

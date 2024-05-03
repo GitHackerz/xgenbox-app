@@ -1,7 +1,7 @@
-import { approveUser, rejectUser } from "@/actions/user";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import { approveBin, rejectBin } from "@/actions/bin";
 
 export default function ActionButton({
   type,
@@ -15,10 +15,10 @@ export default function ActionButton({
   const handleClick = async () => {
     setLoading(true);
     if (type === "approve") {
-      await approveUser(row.original._id);
+      await approveBin(row.original._id);
       row.original.status = "Approved";
     } else {
-      await rejectUser(row.original._id);
+      await rejectBin(row.original._id);
       row.original.status = "Rejected";
     }
 

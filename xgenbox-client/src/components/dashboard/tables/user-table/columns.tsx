@@ -1,6 +1,7 @@
 "use client";
+
 import { ColumnDef } from "@tanstack/react-table";
-import { User } from "@/types/User";
+import { Collector, User } from "@/types/User";
 import { UserStatus } from "@/enums";
 import ActionButton from "@/components/dashboard/tables/user-table/action-button";
 import { CellAction } from "@/components/dashboard/tables/user-table/cell-action";
@@ -23,6 +24,13 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "role",
     header: "ROLE",
+  },
+  {
+    accessorKey: "company",
+    header: "COMPANY",
+    cell: ({ row }) => (
+      <p>{(row.original as Collector).company?.companyName}</p>
+    ),
   },
   {
     accessorKey: "status",

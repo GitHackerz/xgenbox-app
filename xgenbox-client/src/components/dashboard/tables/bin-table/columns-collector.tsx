@@ -1,11 +1,9 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Bin } from "@/types/Bin";
-import { CellAction } from "@/components/dashboard/tables/bin-table/cell-action";
 import { BinStatus } from "@/enums";
-import ActionButton from "@/components/dashboard/tables/bin-table/action-button";
 
-export const columns: ColumnDef<Bin>[] = [
+export const columnsCollector: ColumnDef<Bin>[] = [
   {
     accessorKey: "type",
     header: "TYPE",
@@ -65,19 +63,6 @@ export const columns: ColumnDef<Bin>[] = [
         >
           {row.original.status}
         </div>
-      ),
-  },
-  {
-    id: "actions",
-    header: "ACTIONS",
-    cell: ({ row }) =>
-      row.original.status !== BinStatus.PENDING ? (
-        <CellAction data={row.original} />
-      ) : (
-        <>
-          <ActionButton type="approve" row={row} />
-          <ActionButton type="reject" row={row} />
-        </>
       ),
   },
 ];

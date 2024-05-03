@@ -13,9 +13,9 @@ export default function Home() {
       <Problems />
       <Stats />
       <Features />
-      <Testimonials />
+      {/*<Testimonials />*/}
       <CallToAction />
-      <Blog />
+      {/*<Blog />*/}
     </div>
   );
 }

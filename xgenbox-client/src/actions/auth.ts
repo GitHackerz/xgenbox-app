@@ -3,8 +3,12 @@
 import axios from "axios";
 import { clearSession, setSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { UserType } from "@/enums";
 
 export const createAccount = async (data: any) => {
+  if (![UserType.EMPLOYEE, UserType.COLLECTOR].includes(data.role)) {
+    delete data.company;
+  }
   try {
     await axios.post(`${process.env.SERVER_URL}/user`, data);
     return {

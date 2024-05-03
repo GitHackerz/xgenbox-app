@@ -1,5 +1,5 @@
 import BreadCrumb from "@/components/dashboard/breadcrumb";
-import { getCollectorBinActions } from "@/actions/binActions";
+import { getBinActionsByUser } from "@/actions/binActions";
 import { getSession } from "@/lib/auth";
 import { BinActionClient } from "@/components/dashboard/tables/binaction-table/client";
 
@@ -12,7 +12,7 @@ export default async function UserPage() {
   const { user } = session;
   if (!user) return null;
 
-  const collections = await getCollectorBinActions(user._id);
+  const collections = await getBinActionsByUser(user._id);
   return (
     <>
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">

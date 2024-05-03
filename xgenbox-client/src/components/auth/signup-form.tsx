@@ -32,6 +32,7 @@ const formEmployeeSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
   phone: z.string().min(8),
+  company: z.string().min(3),
 });
 const formCollectorSchema = z.object({
   name: z.string().min(3),
@@ -39,6 +40,7 @@ const formCollectorSchema = z.object({
   password: z.string().min(8),
   phone: z.string().min(8),
   accountType: z.nativeEnum(CollectorAccountType),
+  company: z.string().min(3),
 });
 const formCompanySchema = z.object({
   name: z.string().min(3),
@@ -59,6 +61,7 @@ export default function SignUpForm({
   companies: Company[];
 }) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [companyName, setCompanyName] = React.useState<string | null>(null);
   const router = useRouter();
 
   const form = useForm({
@@ -73,6 +76,7 @@ export default function SignUpForm({
       name: "",
       email: "",
       password: "",
+      company: "",
       accountType:
         type == UserType.COLLECTOR
           ? CollectorAccountType.INDIVIDUAL
@@ -84,6 +88,15 @@ export default function SignUpForm({
     },
   });
 
+  React.useEffect(() => {
+    if (form.watch("company")) {
+      const company = companies.find(
+        (company) => company._id == form.watch("company"),
+      );
+      setCompanyName(company?.companyName || "");
+    }
+  }, [form.watch("company")]);
+
   const formSchema =
     type == UserType.COLLECTOR
       ? formCollectorSchema
@@ -94,10 +107,12 @@ export default function SignUpForm({
   const handleSubmit = form.handleSubmit(
     async (values: z.infer<typeof formSchema>) => {
       setIsLoading(true);
+      console.log("test");
       const { error, success } = await createAccount({
         ...values,
         role: type,
       });
+      console.log("end");
 
       if (!success)
         toast({
@@ -169,6 +184,33 @@ export default function SignUpForm({
               </FormItem>
             )}
           />
+          {type == UserType.EMPLOYEE && (
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select the company">
+                          {field.value ? companyName : "Select the company"}
+                        </SelectValue>
+                      </SelectTrigger>
+                      <SelectContent>
+                        {companies.map((company) => (
+                          <SelectItem key={company._id} value={company._id}>
+                            {company.accountType + " - " + company.companyName}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          )}
           {type == UserType.COLLECTOR ? (
             <div
               className={
@@ -209,7 +251,7 @@ export default function SignUpForm({
                 form.watch("accountType") == CollectorAccountType.COMPANY && (
                   <FormField
                     control={form.control}
-                    name="companyName"
+                    name="company"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
@@ -220,7 +262,7 @@ export default function SignUpForm({
                             <SelectTrigger>
                               <SelectValue placeholder="Select the company">
                                 {field.value
-                                  ? field.value
+                                  ? companyName
                                   : "Select the company"}
                               </SelectValue>
                             </SelectTrigger>
@@ -228,7 +270,7 @@ export default function SignUpForm({
                               {companies.map((company) => (
                                 <SelectItem
                                   key={company._id}
-                                  value={company.companyName}
+                                  value={company._id}
                                 >
                                   {company.accountType +
                                     " - " +

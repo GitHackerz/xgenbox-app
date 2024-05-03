@@ -28,14 +28,14 @@ export default async function UserPage() {
       ? await getCompanyBins(user._id)
       : user.role === UserType.COLLECTOR &&
           (user as Collector).accountType === CollectorAccountType.COMPANY
-        ? await getCompanyBins((user as Collector).company)
+        ? await getCompanyBins((user as Collector).company?._id || null)
         : await getBins();
 
   return (
     <>
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">
         <BreadCrumb items={breadcrumbItems} />
-        <BinClient data={bins} />
+        <BinClient data={bins} user={user} />
       </div>
     </>
   );

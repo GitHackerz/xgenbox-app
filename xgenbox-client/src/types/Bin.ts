@@ -10,6 +10,7 @@ export interface Bin {
   temperature: number;
   gaz: number;
   company: Company;
+  status: string;
 }
 
 export interface BinAction {

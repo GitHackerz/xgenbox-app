@@ -12,11 +12,12 @@ export interface User {
 
 export interface Employee extends User {
   role: UserType.EMPLOYEE;
+  company: Company | null;
 }
 
 export interface Collector extends User {
   role: UserType.COLLECTOR;
-  company: string;
+  company: Company | null;
   accountType: CollectorAccountType;
 }
 

@@ -81,6 +81,39 @@ const GetBinByCompany = async(req, res) => {
     }
 };
 
+const GetBinsByStatus = async(req, res) => {
+    try {
+        const bins = await BinService.getByStatus(req.params.status);
+        res.status(200).json(bins);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+const ApproveBin = async(req, res) => {
+    try {
+        const bin = await BinService.approve(req.params.id);
+        return res.status(200).json(bin);
+    } catch (error) {
+        if (error.message === 'Bin not found')
+            return res.status(404).json({ error: error.message });
+
+        return res.status(500).json({ error: error.message });
+    }
+};
+
+const RejectBin = async(req, res) => {
+    try {
+        const bin = await BinService.reject(req.params.id);
+        return res.status(200).json(bin);
+    } catch (error) {
+        if (error.message === 'Bin not found')
+            return res.status(404).json({ error: error.message });
+
+        return res.status(500).json({ error: error.message });
+    }
+};
+
 module.exports = {
     GetBins,
     GetBinsByType,
@@ -89,5 +122,8 @@ module.exports = {
     GetBin,
     CreateBin,
     UpdateBin,
-    DeleteBin
+    DeleteBin,
+    GetBinsByStatus,
+    ApproveBin,
+    RejectBin
 };

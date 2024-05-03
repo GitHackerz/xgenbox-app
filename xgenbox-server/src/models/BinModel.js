@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const { BinStatus } = require('../enums/EBin');
 
 const binSchema = new Schema({
     type: {
@@ -19,20 +20,23 @@ const binSchema = new Schema({
         required: true
     },
     capacity: {
-        type: Number,
-        required: true
+        type: Number
     },
     temperature: {
-        type: Number,
-        required: true
+        type: Number
     },
     gaz: {
-        type: Number,
-        required: true
+        type: Number
     },
     company: {
         type: Schema.Types.ObjectId,
         ref: 'Company'
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: Object.values(BinStatus),
+        default: BinStatus.PENDING
     }
 });
 

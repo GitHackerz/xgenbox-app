@@ -78,13 +78,13 @@ export const employeeNavItems: NavItem[] = [
   },
   {
     title: "QR Code",
-    href: "/dashboard/qr-code",
+    href: "/dashboard/scan",
     icon: "qrCode",
     label: "QrCode",
   },
   {
     title: "Scan History",
-    href: "/dashboard/scan/history",
+    href: "/dashboard/collection/history",
     icon: "history",
     label: "history",
   },

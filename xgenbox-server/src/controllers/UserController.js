@@ -18,6 +18,15 @@ const GetUsersByType = async(req, res) => {
     }
 };
 
+const GetCompanyUsers = async(req, res) => {
+    try {
+        const users = await UserService.getByCompany(req.params.company);
+        res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const GetPendingUsers = async(req, res) => {
     try {
         const users = await UserService.getPending();
@@ -127,4 +136,4 @@ const grantUser = async(req, res) => {
     }
 };
 
-module.exports = { GetUsers, GetUsersByType, GetPendingUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, approveUser, rejectUser, grantUser };
+module.exports = { GetUsers, GetUsersByType, GetCompanyUsers, GetPendingUsers, GetUser, CreateUser, UpdateUser, DeleteUser, SignIn, approveUser, rejectUser, grantUser };

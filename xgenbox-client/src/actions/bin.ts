@@ -15,8 +15,10 @@ export async function getBins() {
   }
 }
 
-export async function getCompanyBins(companyId: string) {
+export async function getCompanyBins(companyId: string | null) {
   try {
+    if (!companyId) return [];
+
     console.log(companyId);
     const res = await axios.get(SERVER_URL + `/company/${companyId}`);
     return res.data;
@@ -39,6 +41,7 @@ export async function getBin(id: string) {
 export async function createBin(data: any) {
   try {
     const res = await axios.post(SERVER_URL, data);
+    revalidatePath("/dashboard/bin");
     return res.data;
   } catch (err) {
     console.error(err);
@@ -49,6 +52,7 @@ export async function createBin(data: any) {
 export async function updateBin(id: string, data: any) {
   try {
     const res = await axios.put(SERVER_URL + `/${id}`, data);
+    revalidatePath("/dashboard/bin");
     return res.data;
   } catch (err) {
     console.error(err);
@@ -59,6 +63,28 @@ export async function updateBin(id: string, data: any) {
 export async function deleteBin(id: string) {
   try {
     const res = await axios.delete(SERVER_URL + `/${id}`);
+    revalidatePath("/dashboard/bin");
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+export async function approveBin(id: string) {
+  try {
+    const res = await axios.get(SERVER_URL + `/${id}/approve`);
+    revalidatePath("/dashboard/bin");
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+export async function rejectBin(id: string) {
+  try {
+    const res = await axios.get(SERVER_URL + `/${id}/reject`);
     revalidatePath("/dashboard/bin");
     return res.data;
   } catch (err) {
