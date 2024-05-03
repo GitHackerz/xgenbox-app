@@ -2,13 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon .",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
