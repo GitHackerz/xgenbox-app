@@ -1,4 +1,3 @@
-import ModeToggle from "@/components/client/mode-toggle";
 import { getSession } from "@/lib/auth";
 import Image from "next/image";
 
