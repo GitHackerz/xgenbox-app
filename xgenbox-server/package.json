@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "build" : "echo building",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
