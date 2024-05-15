@@ -4,6 +4,8 @@ import { getBins, getCompanyBins } from "@/actions/bin";
 import { getSession } from "@/lib/auth";
 import { CollectorAccountType, UserType } from "@/enums";
 import { Collector } from "@/types/User";
+import BinAlert from "@/components/dashboard/notifs/bin-alert";
+import { Bin } from "@/types/Bin";
 
 const breadcrumbItems = [{ title: "Bin", link: "/dashboard/bin" }];
 export default async function UserPage() {
@@ -23,7 +25,7 @@ export default async function UserPage() {
       </div>
     );
 
-  const bins =
+  const bins: Bin[] =
     user.role === UserType.COMPANY
       ? await getCompanyBins(user._id)
       : user.role === UserType.COLLECTOR &&
@@ -36,6 +38,9 @@ export default async function UserPage() {
       <div className="flex-1 space-y-4  p-4 md:p-8 pt-6">
         <BreadCrumb items={breadcrumbItems} />
         <BinClient data={bins} user={user} />
+        {bins.find((bin) => bin.capacity === 100) && (
+          <BinAlert bin={bins.find((bin) => bin.capacity === 100) as Bin} />
+        )}
       </div>
     </>
   );
